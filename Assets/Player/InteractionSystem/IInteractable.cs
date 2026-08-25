@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    bool interagir(GameObject gameObjectOrigem);
-
+    bool Interagir(GameObject gameObjectOrigem);
+    void AtivarContorno(bool ativar);
 }
