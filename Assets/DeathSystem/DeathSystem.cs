@@ -1,16 +1,77 @@
 using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DeathSystem : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public event Action OnFimRotinaMorte;
+    [SerializeField] TurnManager turnManager;
+    private List<npcScript> npcsVivos = new List<npcScript>();
+    private void Start()
     {
-        
+        turnManager.nightfallTurn += iniciarRotinaNoiteMorte;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void npcAdmin(List<npcScript> targets)
     {
-        
+        npcsVivos = targets;
+
+        //ativar o evento para cada script de npc
+        foreach(npcScript npc in npcsVivos)
+        {
+            npc.faleceuEvent += removerNpc;
+        }
+    }
+
+    public void removerNpc(npcScript npcMorto)
+    {
+        if(npcsVivos.Contains(npcMorto))
+        {
+            npcsVivos.Remove(npcMorto);
+
+            npcMorto.faleceuEvent -= removerNpc;
+
+            Debug.Log("Vitima removida da lista com sucesso");
+        }
+    }
+
+    private void iniciarRotinaNoiteMorte()
+    {
+        StartCoroutine(RotinaNoiteMorte());
+    }
+
+    private IEnumerator RotinaNoiteMorte()
+    {
+        Debug.Log("Iniciando a noite...");
+
+        yield return new WaitForSeconds(3f); //tempo para uma animação ou cutscene
+
+        Debug.Log("Iniciando funcao para morte aleatoria");
+        executarMorteAleatoria();
+
+        Debug.Log("Cutscene e morte terminou. Retornando ao dia");
+
+        OnFimRotinaMorte?.Invoke();
+    }
+
+    private void executarMorteAleatoria()
+    {
+        int quantidadeMortes = UnityEngine.Random.Range(0,3);
+        Debug.Log($"O impostor matara {quantidadeMortes}");
+
+        for(int i = 0; i < quantidadeMortes; i++)
+        {
+            if(npcsVivos.Count == 0) break;
+
+            int iAlvo = UnityEngine.Random.Range(0, npcsVivos.Count);
+            npcScript vitima = npcsVivos[iAlvo];
+
+            vitima.Morrer(); //essa funcao vai lancar o evento faleceuEvent que vai chamar a funcao para remover da lista
+        }
     }
 }
+
+//resumindo o deathsystem: ele recebe a lista de npcs ja sem o impostor. 
+//Quando o evento da noite é lancado ele capta e inicia a rotina de morte, que chama a funcao para decidir qual ou quais nps vão morrer
+//Essa funcao ativa no script do npc sorteado a funcao que mata ele e que lanca um evento faleceuEvent, que é captado pelo deathsystem e atualiza a lista de npcs vivos
