@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class DetectorDeInteracoes : MonoBehaviour
 {
-
     [SerializeField] private float raioDeInteracao = 2f;
     [SerializeField] private LayerMask layerInteragivel; // Para o radar ignorar paredes e chão
 

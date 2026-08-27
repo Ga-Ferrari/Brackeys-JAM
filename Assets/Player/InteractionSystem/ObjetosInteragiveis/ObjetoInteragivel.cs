@@ -6,15 +6,24 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Outline2D))]
 public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
 {
+
+    protected tiposDeAcao tipoAcao = tiposDeAcao.Indefinida;
+
+    [SerializeField] private string nomeInteracao;
     private Outline2D outliner;
-    [SerializeField] private CanvasGroup textoAcao;
+    [SerializeField] private AnimarTextoDialogo textoAcao;
 
     protected virtual void Start()
     {
         gameObject.GetComponent<Outline2D>();
         gameObject.layer = LayerMask.NameToLayer("Interagivel");
         AtivarContorno(false);
-        textoAcao.alpha = 0;
+        EventBus.DispararAcaoFeita(tipoAcao, this);
+        setTipo();
+    }
+
+    protected virtual void setTipo()
+    {
 
     }
 
@@ -27,7 +36,8 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
         }
         if (textoAcao != null)
         {
-            textoAcao.alpha = ativar ? 1 : 0;
+            if (ativar) textoAcao.IniciarAnimacao(nomeInteracao);
+            else textoAcao.DesativarAnimacao();
         }
     }
 }

@@ -17,6 +17,13 @@ public abstract class AnimarTextoDialogo : MonoBehaviour
         StartCoroutine(Animar(mensagem));
     }
 
+    public void DesativarAnimacao()
+    {
+        StopAllCoroutines();
+        StartCoroutine(Desanimar());
+    }
+
     // A corotina abstrata fica protegida, só os scripts filhos mexem nela
     protected abstract IEnumerator Animar(string mensagem);
+    protected abstract IEnumerator Desanimar();
 }
