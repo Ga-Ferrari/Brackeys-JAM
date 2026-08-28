@@ -5,14 +5,15 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instancia;
     //scripts
     [SerializeField] private TurnManager turnManager;
     [SerializeField] private DeathSystem death;
 
     //lista de npcs
-    private List<NPCLogica> npcList;
+    public List<NPCLogica> npcList;
     //variavel para armazenar o npc que será o impostor
-    private NPCLogica impostor;
+    public NPCLogica impostor;
 
     private void Awake()
     {
@@ -30,6 +31,14 @@ public class GameManager : MonoBehaviour
         turnManager.IniciarDia();
 
         death.npcAdmin(npcList);
+    }
+
+    private void OnDestroy()
+    {
+        if(Instancia == this)
+        {
+            Instancia = null;
+        }
     }
 
     private void sortImpostor()
