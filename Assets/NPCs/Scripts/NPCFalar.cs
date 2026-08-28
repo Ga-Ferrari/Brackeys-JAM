@@ -9,14 +9,19 @@ public class FalasNPC : ObjetoInteragivel
     private int npcID;
 
     [SerializeField] private DialogoEmWorldSpace dialogo;
+    [SerializeField] private int custo = 1;
     private bool interagido = false;
 
     [SerializeField] private List<string> falas = new List<string>();
     private int falaAtual = 0;
 
-    public UnityEvent<int> npcInteragido;
     public event Action<tiposDeAcao> AcaoInteragida;
 
+    protected override void DispararAcao()
+    {
+        if (!interagido)
+            EventBus.DispararAcaoFeita(tipoAcao, this, custo);
+    }
 
     protected override void setTipo()
     {
@@ -25,14 +30,12 @@ public class FalasNPC : ObjetoInteragivel
 
     public override bool Interagir(GameObject gameObject)
     {
-
+        base.Interagir(gameObject);
         if (falas.Count > 0)
         {
             if (falaAtual < falas.Count) dialogo.SoltarDialogo(falas[falaAtual++]);
             if (falaAtual == falas.Count) falaAtual = 0;
         }
-
-        npcInteragido?.Invoke(npcID);
 
         interagido = true;
         return true;
@@ -42,6 +45,15 @@ public class FalasNPC : ObjetoInteragivel
     {
         falas = novasFalas;
         return true;
+    }
+
+    public override void AtivarContorno(bool ativar)
+    {
+        base.AtivarContorno(ativar);
+        if (!ativar)
+        {
+            dialogo.DesativarDialogo();
+        }
     }
 
 

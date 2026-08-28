@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 475400208486580380}
   - component: {fileID: 3570629070056282313}
-  - component: {fileID: 6959554732911106822}
+  - component: {fileID: 7183028714293846148}
   m_Layer: 0
   m_Name: TextoDeInteracao
   m_TagString: Untagged
@@ -286,7 +286,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &6959554732911106822
+--- !u!114 &7183028714293846148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,8 +295,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7326103490870783116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83bf466b7c2257d698695f9b3012829e, type: 3}
+  m_Script: {fileID: 11500000, guid: 01a821be7c2ea917a95cff1c3664ebdf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimacaoTextoAparecendo
-  textoUI: {fileID: 4313111214895509269}
+  m_EditorClassIdentifier: Assembly-CSharp::AnimarTextoDialogo
   tempoEntreLetras: 0.05
+  textoTMP: {fileID: 4313111214895509269}

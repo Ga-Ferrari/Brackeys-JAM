@@ -11,15 +11,21 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
 
     [SerializeField] private string nomeInteracao;
     private Outline2D outliner;
-    [SerializeField] private AnimarTextoDialogo textoAcao;
+    [SerializeField] private AnimarTexto textoAcao;
+
+    private bool interagidoEEmRange = false;
 
     protected virtual void Start()
     {
         gameObject.GetComponent<Outline2D>();
         gameObject.layer = LayerMask.NameToLayer("Interagivel");
         AtivarContorno(false);
-        EventBus.DispararAcaoFeita(tipoAcao, this);
         setTipo();
+    }
+
+    protected virtual void DispararAcao()
+    {
+        EventBus.DispararAcaoFeita(tipoAcao, this);
     }
 
     protected virtual void setTipo()
@@ -27,8 +33,15 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
 
     }
 
-    public abstract bool Interagir(GameObject gameObject);
-    public void AtivarContorno(bool ativar)
+    public virtual bool Interagir(GameObject gameObject)
+    {
+        textoAcao.DesativarAnimacao();
+        DispararAcao();
+        interagidoEEmRange = true;
+        return true;
+    }
+
+    public virtual void AtivarContorno(bool ativar)
     {
         if (outliner != null)
         {
@@ -36,8 +49,12 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
         }
         if (textoAcao != null)
         {
-            if (ativar) textoAcao.IniciarAnimacao(nomeInteracao);
-            else textoAcao.DesativarAnimacao();
+            if (ativar && !interagidoEEmRange) textoAcao.IniciarAnimacao(nomeInteracao);
+            else
+            {
+                interagidoEEmRange = false;
+                textoAcao.DesativarAnimacao();
+            }
         }
     }
 }

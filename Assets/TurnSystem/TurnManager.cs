@@ -15,6 +15,7 @@ public class TurnManager : MonoBehaviour
     void Start()
     {
         EventBus.OnDormirCama += IniciarNoite;
+        EventBus.OnInteragir += OnInteracoes;
     }
     public void systemConector(DeathSystem death) //função que "conecta" os eventos
     {
@@ -35,11 +36,12 @@ public class TurnManager : MonoBehaviour
         nightfallTurn?.Invoke();
     }
 
-    public void OnInteracoes(tiposDeAcao tipoAcao, ObjetoInteragivel objeto)
+    public void OnInteracoes(tiposDeAcao tipoAcao, ObjetoInteragivel objeto, int custo = 0)
     {
+        Debug.Log("Entrou on interacao");
         if (tipoAcao == tiposDeAcao.InteracaoNPC)
         {
-
+            trySpendAP(custo);
         }
     }
 
@@ -53,6 +55,7 @@ public class TurnManager : MonoBehaviour
 
         if (actionPoints >= custo)
         {
+            Debug.Log("Debitado AP");
             actionPoints -= custo;
             return true;
         }

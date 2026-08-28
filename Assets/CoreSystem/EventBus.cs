@@ -5,7 +5,7 @@ public static class EventBus
 {
 
     public static event Action OnDormirCama;
-    public static event Action<tiposDeAcao, ObjetoInteragivel> OnInteragir;
+    public static event Action<tiposDeAcao, ObjetoInteragivel, int> OnInteragir;
 
 
     public static void DispararOnDormirCama()
@@ -13,9 +13,10 @@ public static class EventBus
         OnDormirCama?.Invoke();
     }
 
-    public static void DispararAcaoFeita(tiposDeAcao tipoAcao, ObjetoInteragivel objeto)
+    public static void DispararAcaoFeita(tiposDeAcao tipoAcao, ObjetoInteragivel objeto, int custo = 0)
     {
-        OnInteragir?.Invoke(tipoAcao, objeto);
+        Debug.Log("EventBus");
+        OnInteragir?.Invoke(tipoAcao, objeto, custo);
     }
 
 }
