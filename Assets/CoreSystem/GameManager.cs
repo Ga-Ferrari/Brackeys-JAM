@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
         NPCLogica[] npcArray = FindObjectsByType<NPCLogica>();
         //muda para lista para que possa ser atualizada
         npcList = new List<NPCLogica>(npcArray);
-
-        death.npcAdmin(npcList);
     }
 
     private void Start()
@@ -30,6 +28,8 @@ public class GameManager : MonoBehaviour
         sortImpostor();
         turnManager.systemConector(death);
         turnManager.IniciarDia();
+
+        death.npcAdmin(npcList);
     }
 
     private void sortImpostor()

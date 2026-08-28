@@ -33,7 +33,7 @@ public class DeathSystem : MonoBehaviour
             npcMorto.faleceuEvent -= removerNpc;
 
             Debug.Log("Vitima removida da lista com sucesso");
-        }
+        }else Debug.Log("NPC não está na lista");
     }
 
     private void iniciarRotinaNoiteMorte()
@@ -62,7 +62,11 @@ public class DeathSystem : MonoBehaviour
 
         for (int i = 0; i < quantidadeMortes; i++)
         {
-            if (npcsVivos.Count == 0) break;
+            if (npcsVivos.Count == 0)
+            {
+                Debug.Log("Lista de npcs vazia");
+                break;
+            }
 
             int iAlvo = UnityEngine.Random.Range(0, npcsVivos.Count);
             NPCLogica vitima = npcsVivos[iAlvo];
