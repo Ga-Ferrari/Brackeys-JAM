@@ -10,17 +10,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DeathSystem death;
 
     //lista de npcs
-    private List<FalasNPC> npcList;
+    private List<NPCLogica> npcList;
     //variavel para armazenar o npc que será o impostor
-    private FalasNPC impostor;
+    private NPCLogica impostor;
 
     private void Awake()
     {
 
         //funcao que retorna um vetor com todos os npcs na cena
-        FalasNPC[] npcArray = FindObjectsByType<FalasNPC>();
+        NPCLogica[] npcArray = FindObjectsByType<NPCLogica>();
         //muda para lista para que possa ser atualizada
-        npcList = new List<FalasNPC>(npcArray);
+        npcList = new List<NPCLogica>(npcArray);
+
+        death.npcAdmin(npcList);
     }
 
     private void Start()
