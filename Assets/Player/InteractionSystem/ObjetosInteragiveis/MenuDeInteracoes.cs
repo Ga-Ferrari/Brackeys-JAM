@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,6 +12,12 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
     [SerializeField] private GameObject painelMenu;
     [SerializeField] private Transform containerOpcoes; // Ex: Um objeto com componente VerticalLayoutGroup
     [SerializeField] private GameObject prefabOpcaoUI; // Um prefab que tenha Image (fundo) e Text filho
+    private CanvasGroup canvasGroup;
+    [SerializeField] private float tempoAparicao = 1f;
+    private float timerAparicao = 0;
+
+    [SerializeField] private float tempoDesaparicao = 0.5f;
+    private float timerDesaparicao = 0f;
 
     [Header("Cores da Seleção")]
     [SerializeField] private Color corSelecionada = Color.yellow;
@@ -18,7 +25,6 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
 
     private List<ObjetoInteragivel> interacoesDisponiveis = new List<ObjetoInteragivel>();
     private List<Image> fundosUI = new List<Image>();
-
     private int indiceSelecionado = 0;
     private bool menuAberto = false;
     private GameObject playerAtual; // Salva o player para repassar para a interação final
@@ -28,8 +34,35 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
     protected override void Start()
     {
         base.Start();
-        if (painelMenu != null) painelMenu.SetActive(false);
+        if (painelMenu != null) painelMenu.SetActive(true);
+        canvasGroup = painelMenu.GetComponent<CanvasGroup>();
         CarregarInteracoes();
+    }
+
+    void Update()
+    {
+        if (canvasGroup)
+        {
+            if (menuAberto)
+            {
+                timerAparicao += Time.deltaTime;
+                canvasGroup.alpha = math.clamp(math.lerp(canvasGroup.alpha, 1f, timerAparicao / tempoAparicao), 0f, 1f);
+                timerDesaparicao = 0f;
+            }
+            else if (!menuAberto)
+            {
+                timerDesaparicao += Time.deltaTime;
+                timerAparicao = 0f;
+                canvasGroup.alpha = math.clamp(math.lerp(canvasGroup.alpha, 0f, timerDesaparicao / tempoAparicao), 0f, 1f);
+            }
+        }
+    }
+
+
+    public override void AtivarContorno(bool ativar)
+    {
+        base.AtivarContorno(ativar);
+        if (!ativar) FecharMenu();
     }
 
     private void CarregarInteracoes()
@@ -125,7 +158,6 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
     private void AbrirMenu()
     {
         menuAberto = true;
-        painelMenu.SetActive(true);
         indiceSelecionado = 0;
         AtualizarVisualSelecao();
     }
@@ -133,7 +165,6 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
     private void FecharMenu()
     {
         menuAberto = false;
-        painelMenu.SetActive(false);
     }
 
     public void OnNavegarMenu(InputAction.CallbackContext context)

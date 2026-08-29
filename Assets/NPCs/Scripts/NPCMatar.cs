@@ -17,7 +17,6 @@ public class NPCMatar : AcaoComCusto
     {
         base.Start();
         custo = 2;
-        nomeInteracao = "Matar";
         EventBus.trocarSprite += trocarSprite;
     }
 

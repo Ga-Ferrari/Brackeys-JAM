@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5715874901737035697}
   - component: {fileID: 2999614481779177894}
   - component: {fileID: 5262764365704411019}
+  - component: {fileID: 3477985157451179353}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -130,7 +131,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -144,7 +145,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3274193, y: 0.7331023}
   m_EdgeRadius: 0
 --- !u!114 &490851512397236112
 MonoBehaviour:
@@ -171,10 +172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd19bf2d96cfc72838829aac96612d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FalasNPC
-  nomeInteracao: Barbara
+  nomeInteracao: Ask
   textoAcao: {fileID: 6308540632564187482}
-  dialogo: {fileID: 7974126824705481990}
   custo: 1
+  dialogo: {fileID: 7974126824705481990}
   falas:
   - Ola, como vai?
   - Que bom, eu tambem!
@@ -223,8 +224,25 @@ MonoBehaviour:
   painelMenu: {fileID: 5353798266882931432}
   containerOpcoes: {fileID: 2832249396554102842}
   prefabOpcaoUI: {fileID: 25915754043001255, guid: add10dc8497798f64b23e52a61dd0971, type: 3}
+  tempoAparicao: 10
+  tempoDesaparicao: 0.25
   corSelecionada: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   corNormal: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &3477985157451179353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856657550093796744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed1b6ef64e19b26c8efc192e0ed93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCMatar
+  nomeInteracao: Kill
+  textoAcao: {fileID: 0}
+  custo: 2
 --- !u!1001 &1632691725398302859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,15 +326,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4149605706914486266, guid: 18b475d06f27d8feeaea1ef9e49874fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 4149605706914486266, guid: 18b475d06f27d8feeaea1ef9e49874fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 4149605706914486266, guid: 18b475d06f27d8feeaea1ef9e49874fc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4149605706914486266, guid: 18b475d06f27d8feeaea1ef9e49874fc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -397,11 +415,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 475400208486580380, guid: 10fd4d378b1f4508e9aa9bdf0b6f9157, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 475400208486580380, guid: 10fd4d378b1f4508e9aa9bdf0b6f9157, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.66
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 475400208486580380, guid: 10fd4d378b1f4508e9aa9bdf0b6f9157, type: 3}
       propertyPath: m_LocalPosition.z

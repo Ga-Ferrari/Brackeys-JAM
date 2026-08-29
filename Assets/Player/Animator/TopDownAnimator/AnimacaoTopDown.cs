@@ -22,11 +22,20 @@ public class AnimacaoTopDown : MonoBehaviour
         if (rb.linearVelocityX > 0) animador.SetBool("EstaDireita", true);
         else if (rb.linearVelocityX < 0) animador.SetBool("EstaDireita", false);
 
+        if (math.abs(rb.linearVelocityX) > 0.2)
+        {
+            Vector3 escala = transform.localScale;
+
+            // Aplica o sinal da direção sobre o valor absoluto da escala
+            escala.x = Mathf.Abs(escala.x);
+
+            transform.localScale = escala;
+        }
         // Usa Mathf.Abs para garantir que o Animator receba sempre um valor positivo
         animador.SetFloat("velocidade", Mathf.Abs(rb.linearVelocity.magnitude));
     }
 
-    private void Atirar(GameObject alvo)
+    private void Atirar(NPCAtributos alvo)
     {
         float direcaoX = alvo.transform.position.x - transform.position.x;
 
