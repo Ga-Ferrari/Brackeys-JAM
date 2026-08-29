@@ -11,6 +11,7 @@ public class TopMovementController : MonoBehaviour, IMovement
     [SerializeField] private float desaceleracao = 15f;  // Quão rápido ele freia e escorrega
 
     private Vector2 direcaoInput;
+    public float velocidadeX = 0;
     private Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

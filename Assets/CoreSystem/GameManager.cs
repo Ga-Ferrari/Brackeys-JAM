@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TurnManager turnManager;
     [SerializeField] private DeathSystem death;
 
+    public Sprite spriteMorte;
+
     //lista de npcs
     public List<NPCLogica> npcList;
     //variavel para armazenar o npc que será o impostor
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(Instancia == this)
+        if (Instancia == this)
         {
             Instancia = null;
         }

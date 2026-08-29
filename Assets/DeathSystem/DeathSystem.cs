@@ -33,7 +33,8 @@ public class DeathSystem : MonoBehaviour
             npcMorto.faleceuEvent -= removerNpc;
 
             Debug.Log("Vitima removida da lista com sucesso");
-        }else Debug.Log("NPC não está na lista");
+        }
+        else Debug.Log("NPC não está na lista");
     }
 
     private void iniciarRotinaNoiteMorte()
@@ -74,10 +75,10 @@ public class DeathSystem : MonoBehaviour
             }
 
             int iAlvo = UnityEngine.Random.Range(0, totalAlvos);
-            if(iAlvo < npcsVivos.Count)
+            if (iAlvo < npcsVivos.Count)
             {
                 NPCLogica vitima = npcsVivos[iAlvo];
-                if(vitima != null) vitima.Morrer();
+                if (vitima != null) vitima.Morrer();
                 //essa funcao vai lancar o evento faleceuEvent 
                 // que vai chamar a funcao para remover da lista
             }

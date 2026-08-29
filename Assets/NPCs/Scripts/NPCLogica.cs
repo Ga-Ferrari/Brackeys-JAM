@@ -10,9 +10,5 @@ public class NPCLogica : MonoBehaviour
     {
         faleceuEvent?.Invoke(this);
         GameManager.Instancia.npcList.Remove(this);
-        Destroy(gameObject);
     }
-
-
-
 }

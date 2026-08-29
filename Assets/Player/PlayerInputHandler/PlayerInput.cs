@@ -24,4 +24,12 @@ public class PlayerInputHandler : MonoBehaviour
         detector.OnInteract(context);
     }
 
+    public void OnMoverUI(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            detector.OnMoverUi(context);
+        }
+    }
+
 }
