@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instancia == null) Instancia = this;
+        else Destroy(gameObject);
 
         //funcao que retorna um vetor com todos os npcs na cena
         NPCLogica[] npcArray = FindObjectsByType<NPCLogica>();

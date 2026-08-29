@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2243417035877573376}
   - component: {fileID: 490851512397236112}
   - component: {fileID: 2302886642467343662}
+  - component: {fileID: 5715874901737035697}
+  - component: {fileID: 2999614481779177894}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -174,9 +176,33 @@ MonoBehaviour:
   falas:
   - Ola, como vai?
   - Que bom, eu tambem!
-  npcInteragido:
-    m_PersistentCalls:
-      m_Calls: []
+--- !u!114 &5715874901737035697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856657550093796744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c38b215b06bb41f894dcf681463f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCLogica
+--- !u!114 &2999614481779177894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856657550093796744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a258f06c062435249883b91bbdc8c3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCAtributos
+  nome: Desconhecido
+  sexo: 0
+  idade: 0
 --- !u!1001 &3756933139653534174
 PrefabInstance:
   m_ObjectHideFlags: 0

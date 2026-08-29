@@ -57,8 +57,12 @@ public class DeathSystem : MonoBehaviour
 
     private void executarMorteAleatoria()
     {
+        npcsVivos.RemoveAll(npc => npc == null);
+        
         int quantidadeMortes = UnityEngine.Random.Range(1, 3);
         Debug.Log($"O impostor matara {quantidadeMortes}");
+
+        quantidadeMortes = Mathf.Min(quantidadeMortes, npcsVivos.Count);
 
         for (int i = 0; i < quantidadeMortes; i++)
         {

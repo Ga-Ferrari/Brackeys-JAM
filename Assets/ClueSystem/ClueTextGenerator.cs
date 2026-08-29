@@ -66,6 +66,12 @@ public static class ClueTextGenerator
             dicaSorteada = TipoDica.Confiavel;
         }
 
+        inocentes.RemoveAll(npc => npc == null);
+        if(inocentes.Count == 0)//verifica se todos os inocentes já morreram
+        {
+            return "CUIDADO!!";
+        }
+
         switch(dicaSorteada) {
             case TipoDica.Suspeitos:
                 return GerarDicaSuspeitos(atributos.nome, inocentes);
