@@ -4,5 +4,6 @@ public enum tiposDeAcao
     Indefinida,
     InteracaoNPC,
     MatarNPC,
-    Dormir
+    Dormir,
+    ColetarPista
 }

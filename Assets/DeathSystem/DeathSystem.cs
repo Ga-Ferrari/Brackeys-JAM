@@ -34,6 +34,7 @@ public class DeathSystem : MonoBehaviour
 
             Debug.Log("Vitima removida da lista com sucesso");
         }
+        else Debug.Log("NPC não está na lista");
     }
 
     private void iniciarRotinaNoiteMorte()
@@ -57,17 +58,35 @@ public class DeathSystem : MonoBehaviour
 
     private void executarMorteAleatoria()
     {
-        int quantidadeMortes = UnityEngine.Random.Range(0, 3);
+        npcsVivos.RemoveAll(npc => npc == null);
+
+        int quantidadeMortes = UnityEngine.Random.Range(1, 3);
+        int totalAlvos = npcsVivos.Count + 1;
+        quantidadeMortes = Mathf.Min(quantidadeMortes, totalAlvos);
+        //se sortear mais mortes do que possiveis alvos, o numero de mortes fica igual ao de alvos
         Debug.Log($"O impostor matara {quantidadeMortes}");
 
         for (int i = 0; i < quantidadeMortes; i++)
         {
-            if (npcsVivos.Count == 0) break;
+            if (npcsVivos.Count == 0)
+            {
+                Debug.Log("Lista de npcs vazia");
+                break;
+            }
 
-            int iAlvo = UnityEngine.Random.Range(0, npcsVivos.Count);
-            NPCLogica vitima = npcsVivos[iAlvo];
-
-            vitima.Morrer(); //essa funcao vai lancar o evento faleceuEvent que vai chamar a funcao para remover da lista
+            int iAlvo = UnityEngine.Random.Range(0, totalAlvos);
+            if (iAlvo < npcsVivos.Count)
+            {
+                NPCLogica vitima = npcsVivos[iAlvo];
+                if (vitima != null) vitima.Morrer();
+                //essa funcao vai lancar o evento faleceuEvent 
+                // que vai chamar a funcao para remover da lista
+            }
+            else
+            {
+                Debug.Log("O impostor matou o player");
+                break;
+            }
         }
     }
 }

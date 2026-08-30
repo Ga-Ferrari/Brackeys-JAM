@@ -9,9 +9,6 @@ public class NPCLogica : MonoBehaviour
     public void Morrer()
     {
         faleceuEvent?.Invoke(this);
-        Destroy(gameObject);
+        GameManager.Instancia.npcList.Remove(this);
     }
-
-
-
 }

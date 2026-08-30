@@ -5,22 +5,27 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instancia;
     //scripts
     [SerializeField] private TurnManager turnManager;
     [SerializeField] private DeathSystem death;
 
+    public Sprite spriteMorte;
+
     //lista de npcs
-    private List<FalasNPC> npcList;
+    public List<NPCLogica> npcList;
     //variavel para armazenar o npc que será o impostor
-    private FalasNPC impostor;
+    public NPCLogica impostor;
 
     private void Awake()
     {
+        if (Instancia == null) Instancia = this;
+        else Destroy(gameObject);
 
         //funcao que retorna um vetor com todos os npcs na cena
-        FalasNPC[] npcArray = FindObjectsByType<FalasNPC>();
+        NPCLogica[] npcArray = FindObjectsByType<NPCLogica>();
         //muda para lista para que possa ser atualizada
-        npcList = new List<FalasNPC>(npcArray);
+        npcList = new List<NPCLogica>(npcArray);
     }
 
     private void Start()
@@ -28,6 +33,16 @@ public class GameManager : MonoBehaviour
         sortImpostor();
         turnManager.systemConector(death);
         turnManager.IniciarDia();
+
+        death.npcAdmin(npcList);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instancia == this)
+        {
+            Instancia = null;
+        }
     }
 
     private void sortImpostor()

@@ -6,14 +6,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Outline2D))]
 public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
 {
-
     protected tiposDeAcao tipoAcao = tiposDeAcao.Indefinida;
 
-    [SerializeField] private string nomeInteracao;
+    [SerializeField] protected string nomeInteracao;
     private Outline2D outliner;
     [SerializeField] private AnimarTexto textoAcao;
 
     private bool interagidoEEmRange = false;
+    protected bool interagido = false;
+    // Adicione isso no ObjetoInteragivel.cs
+    public string NomeDaInteracao => nomeInteracao;
 
     protected virtual void Start()
     {
@@ -35,8 +37,9 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
 
     public virtual bool Interagir(GameObject gameObject)
     {
-        textoAcao.DesativarAnimacao();
+        if (textoAcao != null) textoAcao.DesativarAnimacao();
         DispararAcao();
+        interagido = true;
         interagidoEEmRange = true;
         return true;
     }

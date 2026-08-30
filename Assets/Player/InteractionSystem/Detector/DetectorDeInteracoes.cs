@@ -9,6 +9,10 @@ public class DetectorDeInteracoes : MonoBehaviour
 
     private IInteractable alvoAtual;
 
+    public static bool interacaoBloqueada = false;
+    public static IInteractable alvoTravado = null;
+
+
     void FixedUpdate()
     {
         BuscarAlvoMaisProximo();
@@ -23,7 +27,12 @@ public class DetectorDeInteracoes : MonoBehaviour
 
         foreach (Collider2D col in encontrados)
         {
-            IInteractable interagivel = col.GetComponent<IInteractable>();
+            // Primeiro tenta pegar o Menu, se não achar, pega qualquer outra interação padrão
+            IInteractable interagivel = col.GetComponent<MenuDeInteracoes>();
+            if (interagivel == null)
+            {
+                interagivel = col.GetComponent<IInteractable>();
+            }
             if (interagivel != null)
             {
                 float distancia = Vector2.Distance(transform.position, col.transform.position);
@@ -53,10 +62,27 @@ public class DetectorDeInteracoes : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        // Se estiver lendo diálogo, ignora a busca por interações
+        if (context.performed && interacaoBloqueada)
+        {
+            alvoTravado.Interagir(gameObject);
+            return;
+        }
+
         if (context.performed && alvoAtual != null)
         {
             alvoAtual.Interagir(gameObject);
         }
+    }
+
+    public void OnMoverUi(InputAction.CallbackContext context)
+    {
+        INavegarMenu menu = (INavegarMenu)alvoAtual;
+        if (menu != null)
+        {
+            menu.OnNavegarMenu(context);
+        }
+
     }
 
     private void OnDrawGizmosSelected()
