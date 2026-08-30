@@ -13,9 +13,9 @@ public class ClueSpawner : MonoBehaviour
 
         locaisSpawn = new Transform[pontos.Length];
 
-        for(int i = 0; i < pontos.Length; i++)
+        for (int i = 0; i < pontos.Length; i++)
         {
-            Debug.Log($"Obtidos {i+1} locais de spawn");
+            Debug.Log($"Obtidos {i + 1} locais de spawn");
             locaisSpawn[i] = pontos[i].transform;
         }
     }
@@ -23,21 +23,24 @@ public class ClueSpawner : MonoBehaviour
     private void Start()
     {
         turnManager.daylightTurn += SpawnNewClue;
+        SpawnNewClue();
     }
 
     private void OnDestroy()
     {
-        if(turnManager != null) turnManager.daylightTurn -= SpawnNewClue;
+        if (turnManager != null) turnManager.daylightTurn -= SpawnNewClue;
     }
 
     private void SpawnNewClue()
     {
-        if(locaisSpawn.Length == 0 || prefabPapel == null) {
+        if (locaisSpawn.Length == 0 || prefabPapel == null)
+        {
             Debug.Log("Nao eh possivel spawnar pista");
             return;
         }
 
-        if(pistaAtual != null) {
+        if (pistaAtual != null)
+        {
             Debug.Log("Deletando pista ja existente...");
             Destroy(pistaAtual);
         }

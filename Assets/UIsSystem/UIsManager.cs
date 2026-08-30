@@ -22,8 +22,9 @@ public class UIsManager : MonoBehaviour
         EventBus.ativarPainel -= LigarPainelMatarImpostor;
     }
 
-    private void LigarPainelDormir() {
-        if(GameManager.Instancia.estado == 1)
+    private void LigarPainelDormir()
+    {
+        if (GameManager.Instancia.estado == 1)
         {
             Debug.Log($"'{GameManager.Instancia.estado}, dormir");
             painelDormir.SetActive(true);
@@ -32,7 +33,7 @@ public class UIsManager : MonoBehaviour
 
     private void LigarPainelMorte()
     {
-        if(GameManager.Instancia.estado == 2)
+        if (GameManager.Instancia.estado == 2)
         {
             Debug.Log($"'{GameManager.Instancia.estado}, morrer");
             painelMorte.SetActive(true);
@@ -40,7 +41,7 @@ public class UIsManager : MonoBehaviour
     }
     private void LigarPainelMatarImpostor()
     {
-        if(GameManager.Instancia.estado == 3)
+        if (GameManager.Instancia.estado == 3)
         {
             Debug.Log($"'{GameManager.Instancia.estado}, matarimpostor");
             painelMatarImpostor.SetActive(true);

@@ -8,6 +8,8 @@ public class TurnManager : MonoBehaviour
     private int actionPoints;
     private const int MAX_AP = 3;
 
+    [SerializeField] private UIEnergia ui;
+
     //gerenciador de turnos
     public event Action daylightTurn; //evento que fala que o dia começou
     public event Action nightfallTurn; //evento que fala que a noite começou
@@ -17,6 +19,7 @@ public class TurnManager : MonoBehaviour
         EventBus.OnDormirCama += IniciarNoite;
         EventBus.OnInteragir += OnInteracoes;
         EventBus.iniciarNoite += IniciarNoite;
+        ui.atualizarEnergia(actionPoints);
     }
     public void systemConector(DeathSystem death) //função que "conecta" os eventos
     {
@@ -29,6 +32,7 @@ public class TurnManager : MonoBehaviour
         actionPoints = MAX_AP;
         daylightTurn?.Invoke();
         EventBus.IniciarManha();
+        ui.atualizarEnergia(actionPoints);
     }
 
     public void IniciarNoite()
@@ -59,6 +63,7 @@ public class TurnManager : MonoBehaviour
         {
             Debug.Log("Debitado AP");
             actionPoints -= custo;
+            ui.atualizarEnergia(actionPoints);
             return true;
         }
 
