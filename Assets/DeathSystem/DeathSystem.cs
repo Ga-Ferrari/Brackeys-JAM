@@ -88,7 +88,7 @@ public class DeathSystem : MonoBehaviour
             else
             {
                 Debug.Log("O impostor matou o player");
-                if(GameManager.Instancia.estado != 3)
+                if (GameManager.Instancia.estado != 3)
                     GameManager.Instancia.estado = 2;
             }
         }
