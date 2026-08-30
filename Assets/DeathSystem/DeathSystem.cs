@@ -61,7 +61,7 @@ public class DeathSystem : MonoBehaviour
     {
         npcsVivos.RemoveAll(npc => npc == null);
 
-        int quantidadeMortes = 1;//UnityEngine.Random.Range(1, 3);
+        int quantidadeMortes = UnityEngine.Random.Range(1, 3);
         int totalAlvos = npcsVivos.Count + 1;
         quantidadeMortes = Mathf.Min(quantidadeMortes, totalAlvos);
         //se sortear mais mortes do que possiveis alvos, o numero de mortes fica igual ao de alvos
@@ -69,6 +69,7 @@ public class DeathSystem : MonoBehaviour
 
         for (int i = 0; i < quantidadeMortes; i++)
         {
+
             if (npcsVivos.Count == 0)
             {
                 Debug.Log("Lista de npcs vazia");

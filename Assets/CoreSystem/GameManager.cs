@@ -46,9 +46,17 @@ public class GameManager : MonoBehaviour
         sortImpostor();
         turnManager.systemConector(death);
         turnManager.IniciarDia();
-
         death.npcAdmin(npcList);
+        EventBus.IniciarManha();
+        StartCoroutine(correcaoPrimeiraExecucao());
         EventBus.iniciarManha += SetarFalasDosNPCs;
+    }
+
+    private IEnumerator correcaoPrimeiraExecucao()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SetarFalasDosNPCs();
     }
 
     private void OnDestroy()
@@ -67,6 +75,8 @@ public class GameManager : MonoBehaviour
             npc.GetComponent<FalasNPC>().setFalas(falasNpcs[indiceAleatorio].falas);
             Debug.Log("Setando falas dos NPCs");
         }
+        int indice = UnityEngine.Random.Range(0, falasNpcs.Count);
+        impostor.GetComponent<FalasNPC>().setFalas(falasNpcs[indice].falas);
     }
 
     private void sortImpostor()
