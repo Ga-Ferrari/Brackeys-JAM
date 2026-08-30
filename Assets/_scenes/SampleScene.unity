@@ -665,6 +665,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasAnimations
       objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2131002269}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: IniciarDia
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TurnManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7680644921313607484, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
       propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -832,11 +860,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.89
+      value: 4.37
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.15
+      value: -8.24
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2140,7 +2168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8f2ef031e10236db591a7f7781a34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cama
-  nomeInteracao: Dormir
+  nomeInteracao: Sleep
   textoAcao: {fileID: 1736173142}
   interagivel: 1
 --- !u!114 &1590727985

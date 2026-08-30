@@ -20,7 +20,7 @@ public class TurnManager : MonoBehaviour
     }
     public void systemConector(DeathSystem death) //função que "conecta" os eventos
     {
-        death.OnFimRotinaMorte += IniciarDia;
+
     }
 
     public void IniciarDia()

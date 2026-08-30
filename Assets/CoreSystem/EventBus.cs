@@ -51,7 +51,7 @@ public static class EventBus
     public static void Atirar(NPCAtributos npcAMorrer)
     {
         NPCLogica impostor = npcAMorrer.GetComponent<NPCLogica>();
-        if(GameManager.Instancia.impostor == impostor)
+        if (GameManager.Instancia.impostor == impostor)
         {
             GameManager.Instancia.estado = 3;
         }
