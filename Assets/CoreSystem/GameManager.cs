@@ -4,19 +4,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class ConjuntoDeFalas
+{
+    public List<string> falas = new List<string>();
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instancia;
     //scripts
-    [SerializeField] private TurnManager turnManager;
-    [SerializeField] private DeathSystem death;
+    [SerializeField] public TurnManager turnManager;
+    [SerializeField] public DeathSystem death;
+    public List<NPCLogica> npcsAMorrer = new List<NPCLogica>();
 
     public Sprite spriteMorte;
 
+    public bool primeiraInteracao = true;
+    public List<string> primeiraFala = new List<string>();
+    public int posPrimeiraFala = 0;
     //lista de npcs
     public List<NPCLogica> npcList;
     //variavel para armazenar o npc que será o impostor
     public NPCLogica impostor;
+
+    public List<ConjuntoDeFalas> falasNpcs = new List<ConjuntoDeFalas>();
 
     private void Awake()
     {
@@ -36,6 +48,7 @@ public class GameManager : MonoBehaviour
         turnManager.IniciarDia();
 
         death.npcAdmin(npcList);
+        EventBus.iniciarManha += SetarFalasDosNPCs;
     }
 
     private void OnDestroy()
@@ -43,6 +56,16 @@ public class GameManager : MonoBehaviour
         if (Instancia == this)
         {
             Instancia = null;
+        }
+    }
+
+    private void SetarFalasDosNPCs()
+    {
+        foreach (NPCLogica npc in death.npcsVivos)
+        {
+            int indiceAleatorio = UnityEngine.Random.Range(0, falasNpcs.Count);
+            npc.GetComponent<FalasNPC>().setFalas(falasNpcs[indiceAleatorio].falas);
+            Debug.Log("Setando falas dos NPCs");
         }
     }
 

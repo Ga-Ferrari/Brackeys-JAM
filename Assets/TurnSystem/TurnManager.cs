@@ -16,6 +16,7 @@ public class TurnManager : MonoBehaviour
     {
         EventBus.OnDormirCama += IniciarNoite;
         EventBus.OnInteragir += OnInteracoes;
+        EventBus.iniciarNoite += IniciarNoite;
     }
     public void systemConector(DeathSystem death) //função que "conecta" os eventos
     {
@@ -27,6 +28,7 @@ public class TurnManager : MonoBehaviour
         isDay = true;
         actionPoints = MAX_AP;
         daylightTurn?.Invoke();
+        EventBus.IniciarManha();
     }
 
     public void IniciarNoite()
@@ -41,7 +43,7 @@ public class TurnManager : MonoBehaviour
         Debug.Log("Entrou on interacao");
         if (tipoAcao == tiposDeAcao.InteracaoNPC)
         {
-            trySpendAP(custo);
+            //trySpendAP(custo);
         }
     }
 
