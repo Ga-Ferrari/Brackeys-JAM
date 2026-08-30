@@ -6,8 +6,7 @@ public static class EventBus
 {
 
     public static event Action OnDormirCama;
-    public static event Action OnMortePlayer;
-    public static event Action OnMatarImpostor;
+    public static event Action ativarPainel;
 
     public static event Action<tiposDeAcao, ObjetoInteragivel, int> OnInteragir;
 
@@ -17,6 +16,11 @@ public static class EventBus
     public static event Action travarControles;
     public static event Action iniciarManha;
     public static event Action iniciarNoite;
+
+    public static void AtivarPainel()
+    {
+        ativarPainel?.Invoke();
+    }
 
     public static void TravarControles()
     {
@@ -33,15 +37,6 @@ public static class EventBus
         OnDormirCama?.Invoke();
     }
 
-    public static void DispararMortePlayer()
-    {
-        OnMortePlayer?.Invoke();
-    }
-
-    public static void DispararMatarImpostor()
-    {
-        OnMatarImpostor?.Invoke();
-    }
     public static void IniciarNoite()
     {
         Debug.Log("Iniciou a noite");
@@ -55,6 +50,11 @@ public static class EventBus
 
     public static void Atirar(NPCAtributos npcAMorrer)
     {
+        NPCLogica impostor = npcAMorrer.GetComponent<NPCLogica>();
+        if(GameManager.Instancia.impostor == impostor)
+        {
+            GameManager.Instancia.estado = 3;
+        }
         atirar?.Invoke(npcAMorrer);
     }
 

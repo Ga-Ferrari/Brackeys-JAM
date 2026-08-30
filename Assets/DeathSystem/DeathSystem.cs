@@ -87,11 +87,11 @@ public class DeathSystem : MonoBehaviour
             else
             {
                 Debug.Log("O impostor matou o player");
-                EventBus.DispararMortePlayer();
-
-                SceneManager.LoadScene(0);
+                if(GameManager.Instancia.estado != 3)
+                    GameManager.Instancia.estado = 2;
             }
         }
+        EventBus.AtivarPainel();
     }
 }
 

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7987365308947504504}
   - component: {fileID: 4303491005399108086}
-  - component: {fileID: -7740988001114315233}
   - component: {fileID: 4697386782906555378}
   - component: {fileID: 2555724177954045957}
+  - component: {fileID: 5316989811231132565}
   m_Layer: 6
   m_Name: papel
   m_TagString: Untagged
@@ -34,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6657732672268938099}
+  - {fileID: 6347252948195698340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4303491005399108086
@@ -85,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5f4f72f7a7b8a1c692ca326bf3d5c2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,8 +96,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!70 &-7740988001114315233
-CapsuleCollider2D:
+--- !u!114 &4697386782906555378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660644065190070162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6786d98d61acab43280c539d57729e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outline2D
+  espessuraContorno: 1
+--- !u!114 &2555724177954045957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660644065190070162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cd0bfa63444ae43b9e86f0fd2eff66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClueInteractable
+  nomeInteracao: Coletar Pista
+  textoAcao: {fileID: 4130592374500690795}
+  interagivel: 1
+  dialogo: {fileID: 9079627709461341227}
+--- !u!61 &5316989811231132565
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,35 +160,94 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
---- !u!114 &4697386782906555378
-MonoBehaviour:
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.25, y: 0.25}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.25, y: 0.25}
+  m_EdgeRadius: 0
+--- !u!1001 &432599739441256870
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7987365308947504504}
+    m_Modifications:
+    - target: {fileID: 2747320450730015647, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_Name
+      value: "DialogueComponentComAnima\xE7\xE3oBasica"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109206907097431960, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 019e35496b2b17eb89c91df28022f69f, type: 3}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.28314
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1672
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+--- !u!4 &6347252948195698340 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6779359751950302978, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+  m_PrefabInstance: {fileID: 432599739441256870}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2660644065190070162}
+--- !u!114 &9079627709461341227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8647393285048778125, guid: 66cdf5a38c3a6599ab2635220c45cd02, type: 3}
+  m_PrefabInstance: {fileID: 432599739441256870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6786d98d61acab43280c539d57729e5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 270fdd7299fbcc1a39d86f2c0434806d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Outline2D
-  espessuraContorno: 1
---- !u!114 &2555724177954045957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2660644065190070162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cd0bfa63444ae43b9e86f0fd2eff66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ClueInteractable
-  nomeInteracao: Coletar Pista
-  textoAcao: {fileID: 4130592374500690795}
+  m_EditorClassIdentifier: Assembly-CSharp::DialogoEmWorldSpace
 --- !u!1001 &6556662095136910319
 PrefabInstance:
   m_ObjectHideFlags: 0
