@@ -832,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.89
+      value: 4.42
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2577,7 +2577,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2999614481779177894, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: nome
-      value: Lawrence B.
+      value: James B.
       objectReference: {fileID: 0}
     - target: {fileID: 3856657550093796744, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_Name
@@ -2633,7 +2633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262764365704411019, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: nomeInteracao
-      value: Lawrence B.
+      value: James B.
       objectReference: {fileID: 0}
     - target: {fileID: 8863636082107968483, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_Sprite
