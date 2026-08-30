@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -55,5 +56,10 @@ public class GameManager : MonoBehaviour
 
         npcList.Remove(impostor);
         Debug.Log("Impostor removido");
+    }
+
+    public void CarregarMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

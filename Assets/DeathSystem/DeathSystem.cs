@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class DeathSystem : MonoBehaviour
 {
@@ -85,7 +86,9 @@ public class DeathSystem : MonoBehaviour
             else
             {
                 Debug.Log("O impostor matou o player");
-                break;
+                EventBus.DispararMortePlayer();
+
+                SceneManager.LoadScene(0);
             }
         }
     }
