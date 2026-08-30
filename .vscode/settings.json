@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Brackeys JAM.slnx",
+    "dotnet.defaultSolution": "Brackeys-JAM.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }

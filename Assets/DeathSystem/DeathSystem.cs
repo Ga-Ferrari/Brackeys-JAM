@@ -87,7 +87,9 @@ public class DeathSystem : MonoBehaviour
             else
             {
                 Debug.Log("O impostor matou o player");
-                break;
+                EventBus.DispararMortePlayer();
+
+                SceneManager.LoadScene(0);
             }
         }
     }

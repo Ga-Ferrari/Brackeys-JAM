@@ -6,6 +6,9 @@ public static class EventBus
 {
 
     public static event Action OnDormirCama;
+    public static event Action OnMortePlayer;
+    public static event Action OnMatarImpostor;
+
     public static event Action<tiposDeAcao, ObjetoInteragivel, int> OnInteragir;
 
     public static event Action<NPCAtributos> atirar;
@@ -30,6 +33,15 @@ public static class EventBus
         OnDormirCama?.Invoke();
     }
 
+    public static void DispararMortePlayer()
+    {
+        OnMortePlayer?.Invoke();
+    }
+
+    public static void DispararMatarImpostor()
+    {
+        OnMatarImpostor?.Invoke();
+    }
     public static void IniciarNoite()
     {
         Debug.Log("Iniciou a noite");
@@ -55,5 +67,4 @@ public static class EventBus
     {
         OnInteragir?.Invoke(tipoAcao, objeto, custo);
     }
-
 }
