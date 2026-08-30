@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     //variavel para armazenar o npc que será o impostor
     public NPCLogica impostor;
 
+    public int estado = 1;
+
     public List<ConjuntoDeFalas> falasNpcs = new List<ConjuntoDeFalas>();
 
     private void Awake()
