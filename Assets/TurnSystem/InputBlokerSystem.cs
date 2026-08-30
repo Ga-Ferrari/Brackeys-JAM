@@ -7,22 +7,22 @@ public class InputBlokerSystem : MonoBehaviour
     void Start()
     {
         turnManager.daylightTurn += destravarControles;
-        turnManager.nightfallTurn += travarControles;
+        EventBus.travarControles += travarControles;
     }
-    
+
     private void travarControles() //desativa o playerInput se receber o evento de troca de turno para noite
     {
-        if(playerInput != null)
+        if (playerInput != null)
         {
             playerInput.enabled = false;
         }
-    } 
+    }
 
     private void destravarControles() //reativa o playerInput quando troca de turno para dia
     {
-        if(playerInput != null)
+        if (playerInput != null)
         {
             playerInput.enabled = true;
         }
-    } 
+    }
 }

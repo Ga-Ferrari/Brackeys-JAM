@@ -38,7 +38,7 @@ public class AnimacaoTopDown : MonoBehaviour
     private void Atirar(NPCAtributos alvo)
     {
         float direcaoX = alvo.transform.position.x - transform.position.x;
-
+        EventBus.TravarControles();
         // Pega a escala atual
         Vector3 escala = transform.localScale;
 
@@ -47,7 +47,6 @@ public class AnimacaoTopDown : MonoBehaviour
 
         // Devolve o Vector3 completo
         transform.localScale = escala;
-
         animador.SetTrigger("Atirar");
     }
 
