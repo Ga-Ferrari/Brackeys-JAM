@@ -1755,9 +1755,89 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7398178478201334, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994015773625766426, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6175123271243311017, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
       propertyPath: m_Name
       value: CanvasAnimations
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876277268980324017, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876277268980324017, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876277268980324017, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876277268980324017, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680644921313607484, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: tempoPorImagem
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680644921313607484, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680644921313607484, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2131002270}
+    - target: {fileID: 7680644921313607484, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CarregarMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680644921313607484, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680644921313607484, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615959936468957070, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615959936468957070, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615959936468957070, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2131002270}
+    - target: {fileID: 8615959936468957070, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615959936468957070, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CarregarMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615959936468957070, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615959936468957070, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9028749799852087108, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9163063504116207135, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
       propertyPath: m_Pivot.x

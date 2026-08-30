@@ -10,19 +10,40 @@ public class UIsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EventBus.OnDormirCama += LigarPainelDormir;
-        EventBus.OnMortePlayer += LigarPainelMorte;
-        EventBus.OnMatarImpostor += LigarPainelMatarImpostor;
+        EventBus.ativarPainel += LigarPainelDormir;
+        EventBus.ativarPainel += LigarPainelMorte;
+        EventBus.ativarPainel += LigarPainelMatarImpostor;
     }
 
     private void OnDisable()
     {
-        EventBus.OnDormirCama -= LigarPainelDormir;
-        EventBus.OnMortePlayer -= LigarPainelMorte;
-        EventBus.OnMatarImpostor -= LigarPainelMatarImpostor;
+        EventBus.ativarPainel -= LigarPainelDormir;
+        EventBus.ativarPainel -= LigarPainelMorte;
+        EventBus.ativarPainel -= LigarPainelMatarImpostor;
     }
 
-    private void LigarPainelDormir() { painelDormir.SetActive(true); }
-    private void LigarPainelMorte() { painelMorte.SetActive(true); }
-    private void LigarPainelMatarImpostor() { painelMatarImpostor.SetActive(true); }
+    private void LigarPainelDormir() {
+        if(GameManager.Instancia.estado == 1)
+        {
+            Debug.Log($"'{GameManager.Instancia.estado}, dormir");
+            painelDormir.SetActive(true);
+        }
+    }
+
+    private void LigarPainelMorte()
+    {
+        if(GameManager.Instancia.estado == 2)
+        {
+            Debug.Log($"'{GameManager.Instancia.estado}, morrer");
+            painelMorte.SetActive(true);
+        }
+    }
+    private void LigarPainelMatarImpostor()
+    {
+        if(GameManager.Instancia.estado == 3)
+        {
+            Debug.Log($"'{GameManager.Instancia.estado}, matarimpostor");
+            painelMatarImpostor.SetActive(true);
+        }
+    }
 }
