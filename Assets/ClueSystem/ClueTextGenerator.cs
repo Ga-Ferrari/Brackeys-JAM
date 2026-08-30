@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public static class ClueTextGenerator
 {
     //enum dos tipos de dica do jogo
-    private enum TipoDica {Suspeitos, Confiavel, Idade, Genero}
+    private enum TipoDica { Suspeitos, Confiavel, Idade, Genero }
 
     //lista dos tipos de dica
     private static List<TipoDica> dicasDisponiveis = new List<TipoDica>
@@ -29,7 +29,7 @@ public static class ClueTextGenerator
 
     public static string GerarDica()
     {
-        if(dicasDisponiveis.Count == 0)
+        if (dicasDisponiveis.Count == 0)
         {
             Debug.Log("Nao ha mais dicas");
             return "...";
@@ -40,39 +40,40 @@ public static class ClueTextGenerator
         TipoDica dicaSorteada = dicasDisponiveis[iSort];
 
 
-        if(dicaSorteada != TipoDica.Confiavel)
+        if (dicaSorteada != TipoDica.Confiavel)
         {
             dicasDisponiveis.RemoveAt(iSort);
         }
 
         //obetem impostor e lista de npcs
         NPCLogica assassino = GameManager.Instancia.impostor;
-        if(assassino == null)
+        if (assassino == null)
         {
             Debug.Log("Impostor nulo");
             return "...";
         }
 
         NPCAtributos atributos = assassino.GetComponent<NPCAtributos>();
-        if(atributos == null)
-        {      
+        if (atributos == null)
+        {
             Debug.Log("Impostor sem atributos");
             return "...";
         }
 
         List<NPCLogica> inocentes = GameManager.Instancia.npcList;
-        if(dicaSorteada == TipoDica.Suspeitos && inocentes.Count <= 2)
+        if (dicaSorteada == TipoDica.Suspeitos && inocentes.Count <= 2)
         {
             dicaSorteada = TipoDica.Confiavel;
         }
 
         inocentes.RemoveAll(npc => npc == null);
-        if(inocentes.Count == 0)//verifica se todos os inocentes já morreram
+        if (inocentes.Count == 0)//verifica se todos os inocentes já morreram
         {
             return "CUIDADO!!";
         }
 
-        switch(dicaSorteada) {
+        switch (dicaSorteada)
+        {
             case TipoDica.Suspeitos:
                 return GerarDicaSuspeitos(atributos.nome, inocentes);
             case TipoDica.Confiavel:
@@ -103,11 +104,11 @@ public static class ClueTextGenerator
 
         string inocente1 = inocentes[i1].GetComponent<NPCAtributos>().nome;
         string inocente2 = inocentes[i2].GetComponent<NPCAtributos>().nome;
-        
+
         //coloca os inocentes e o impostor em uma lista
-        List<string> nomes = new List<string>{ nomeImpostor, inocente1, inocente2};
+        List<string> nomes = new List<string> { nomeImpostor, inocente1, inocente2 };
         //embaralha a lista
-        nomes.Sort((a,b) => UnityEngine.Random.value.CompareTo(0.5f));
+        nomes.Sort((a, b) => UnityEngine.Random.value.CompareTo(0.5f));
 
         return $"'I'm suspicious of {nomes[0]}, {nomes[1]} and {nomes[2]}'";
     }

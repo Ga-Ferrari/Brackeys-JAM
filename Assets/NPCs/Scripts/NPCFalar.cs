@@ -26,7 +26,6 @@ public class FalasNPC : AcaoComCusto
     public override bool Interagir(GameObject gameObject)
     {
         base.Interagir(gameObject);
-
         DetectorDeInteracoes.interacaoBloqueada = true;
         DetectorDeInteracoes.alvoTravado = this;
         if (falas.Count > 0)
@@ -35,7 +34,6 @@ public class FalasNPC : AcaoComCusto
             if (GameManager.Instancia.primeiraInteracao)
             {
                 dialogo.SoltarDialogo(GameManager.Instancia.primeiraFala[GameManager.Instancia.posPrimeiraFala++]);
-                GameManager.Instancia.primeiraInteracao = false;
             }
             else
             {
@@ -56,7 +54,42 @@ public class FalasNPC : AcaoComCusto
 
     public bool setFalas(List<string> novasFalas)
     {
-        falas = novasFalas;
+        List<string> falasTratadas = new List<string>();
+        string meuNome = GetComponent<NPCAtributos>().name; // Salva fora do loop para otimizar
+
+        foreach (string fala in novasFalas)
+        {
+            if (fala.Contains("<name>"))
+            {
+                NPCAtributos npcAtt = null;
+
+                // Trava de segurança: evita um loop infinito se este for o único NPC vivo
+                if (GameManager.Instancia.death.npcsVivos.Count > 1)
+                {
+                    do
+                    {
+                        NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                        npcAtt = npc.GetComponent<NPCAtributos>();
+                    } while (npcAtt.name == meuNome);
+
+                    // Strings em C# são imutáveis. O Replace retorna uma NOVA string, não altera a original.
+                    string falaSubstituida = fala.Replace("<name>", npcAtt.name);
+                    falasTratadas.Add(falaSubstituida);
+                }
+                else
+                {
+                    // Fallback caso ele seja o último sobrevivente
+                    falasTratadas.Add(fala.Replace("<name>", "alguém"));
+                }
+            }
+            else
+            {
+                // Se a fala não tiver <name>, ela precisa ser adicionada mesmo assim!
+                falasTratadas.Add(fala);
+            }
+        }
+
+        falas = falasTratadas;
         return true;
     }
 

@@ -1566,11 +1566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 5.04
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.77
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: 4699610769502892686, guid: 0a0d8ef5ba888d3f5aa232c8f1190c15, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1655,6 +1655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cama
   nomeInteracao: Dormir
   textoAcao: {fileID: 1736173142}
+  interagivel: 1
 --- !u!114 &1590727985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2301,9 +2302,29 @@ MonoBehaviour:
   npcsAMorrer: []
   spriteMorte: {fileID: 21300000, guid: 96c214099a6fd38ac9cac420de35c2fc, type: 3}
   primeiraInteracao: 1
-  primeiraFala: I saw a sheet of paper lying around, <b>I believe it's yours</b>.
+  primeiraFala:
+  - I saw a sheet of paper lying around
+  - I believe it's yours.
+  posPrimeiraFala: 0
   npcList: []
   impostor: {fileID: 0}
+  falasNpcs:
+  - falas:
+    - I didn't notice anything different.
+  - falas:
+    - You're acting strange.
+  - falas:
+    - Please do not disturb me.
+  - falas:
+    - <i>Sigh-</i>
+  - falas:
+    - A real shame, isn't it?
+  - falas:
+    - '<name> was acting strangely yesterday. '
+  - falas:
+    - I spent the day with <name>.
+  - falas:
+    - It looks like <name> is planning something.
 --- !u!114 &2131002271
 MonoBehaviour:
   m_ObjectHideFlags: 0

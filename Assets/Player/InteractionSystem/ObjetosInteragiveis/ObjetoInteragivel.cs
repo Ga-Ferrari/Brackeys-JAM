@@ -20,6 +20,8 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
     // Adicione isso no ObjetoInteragivel.cs
     public string NomeDaInteracao => nomeInteracao;
 
+    public bool interagivel = true;
+
     protected virtual void Start()
     {
         gameObject.GetComponent<Outline2D>();
