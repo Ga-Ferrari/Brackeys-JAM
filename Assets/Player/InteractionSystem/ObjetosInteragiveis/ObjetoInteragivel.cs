@@ -14,6 +14,9 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
 
     private bool interagidoEEmRange = false;
     protected bool interagido = false;
+
+
+
     // Adicione isso no ObjetoInteragivel.cs
     public string NomeDaInteracao => nomeInteracao;
 

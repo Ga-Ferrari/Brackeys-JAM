@@ -10,5 +10,7 @@ public class NPCLogica : MonoBehaviour
     {
         faleceuEvent?.Invoke(this);
         GameManager.Instancia.npcList.Remove(this);
+        EventBus.TrocarSprite();
+        Destroy(GetComponent<Collider2D>());
     }
 }

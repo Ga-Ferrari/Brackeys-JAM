@@ -14,10 +14,8 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
     [SerializeField] private GameObject prefabOpcaoUI; // Um prefab que tenha Image (fundo) e Text filho
     private CanvasGroup canvasGroup;
     [SerializeField] private float tempoAparicao = 1f;
-    private float timerAparicao = 0;
 
     [SerializeField] private float tempoDesaparicao = 0.5f;
-    private float timerDesaparicao = 0f;
 
     [Header("Cores da Seleção")]
     [SerializeField] private Color corSelecionada = Color.yellow;
@@ -45,15 +43,11 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
         {
             if (menuAberto)
             {
-                timerAparicao += Time.deltaTime;
-                canvasGroup.alpha = math.clamp(math.lerp(canvasGroup.alpha, 1f, timerAparicao / tempoAparicao), 0f, 1f);
-                timerDesaparicao = 0f;
+                canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, 1f, Time.deltaTime / tempoAparicao);
             }
             else if (!menuAberto)
             {
-                timerDesaparicao += Time.deltaTime;
-                timerAparicao = 0f;
-                canvasGroup.alpha = math.clamp(math.lerp(canvasGroup.alpha, 0f, timerDesaparicao / tempoAparicao), 0f, 1f);
+                canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, 0f, Time.deltaTime / tempoDesaparicao); ;
             }
         }
     }
