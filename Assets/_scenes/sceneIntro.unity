@@ -428,12 +428,12 @@ MonoBehaviour:
   telaDeFundo: {fileID: 1358020198}
   botaoInvisivel: {fileID: 1194362957}
   paineisHistoria:
-  - {fileID: 21300000, guid: e57c2db3597331f499a8a644416e7ba1, type: 3}
+  - {fileID: 21300000, guid: f95ce12ff7f4e0a42913cb8d4103563f, type: 3}
   - {fileID: 21300000, guid: c646ac3871f7f4d4da40e247b475c446, type: 3}
   - {fileID: 21300000, guid: 573d8e775ccc854448ddc71cf623945e, type: 3}
   - {fileID: 21300000, guid: b198c16147cf2624a8b1170c3922236f, type: 3}
   - {fileID: 21300000, guid: b3764770e271b4946b56491b798ace02, type: 3}
-  - {fileID: 21300000, guid: b25133860b26aff46b7f417ed8c31de5, type: 3}
+  - {fileID: 21300000, guid: d1786fbc969b5fe7295ac674280eac5f, type: 3}
   - {fileID: 21300000, guid: caad91070c9e763488757ed541a82de2, type: 3}
 --- !u!1 &1106036166
 GameObject:
