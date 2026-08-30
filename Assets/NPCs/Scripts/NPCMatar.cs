@@ -13,6 +13,8 @@ public class NPCMatar : AcaoComCusto
         custo = 2;
     }
 
+
+
     protected override void Start()
     {
         base.Start();
@@ -29,9 +31,12 @@ public class NPCMatar : AcaoComCusto
         return true;
     }
 
-    private void trocarSprite()
+    private void trocarSprite(NPCLogica NpcLogica)
     {
-        GetComponent<SpriteRenderer>().sprite = GameManager.Instancia.spriteMorte;
+        if (NpcLogica == GetComponent<NPCLogica>())
+        {
+            GetComponent<SpriteRenderer>().sprite = GameManager.Instancia.spriteMorte;
+        }
     }
 
 }

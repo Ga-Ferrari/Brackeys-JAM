@@ -118,7 +118,6 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
                 }
                 else
                 {
-                    Debug.Log(acao.Custo);
                     textoCusto.text = acao.Custo.ToString();
                 }
             }
@@ -191,8 +190,10 @@ public class MenuDeInteracoes : ObjetoInteragivel, INavegarMenu
 
     private void ConfirmarSelecao()
     {
+        AcaoComCusto acao = interacoesDisponiveis[indiceSelecionado] as AcaoComCusto;
         // Repassa a chamada para o script correto da lista!
-        interacoesDisponiveis[indiceSelecionado].Interagir(playerAtual);
+        if (acao.Interagido || GameManager.Instancia.turnManager.trySpendAP(acao.Custo))
+            interacoesDisponiveis[indiceSelecionado].Interagir(playerAtual);
 
         FecharMenu();
     }

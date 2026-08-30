@@ -69,8 +69,10 @@ public class DetectorDeInteracoes : MonoBehaviour
             return;
         }
 
+
         if (context.performed && alvoAtual != null)
         {
+
             alvoAtual.Interagir(gameObject);
         }
     }

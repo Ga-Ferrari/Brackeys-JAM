@@ -7,7 +7,7 @@ public class DeathSystem : MonoBehaviour
 {
     public event Action OnFimRotinaMorte;
     [SerializeField] TurnManager turnManager;
-    private List<NPCLogica> npcsVivos = new List<NPCLogica>();
+    public List<NPCLogica> npcsVivos = new List<NPCLogica>();
     private void Start()
     {
         turnManager.nightfallTurn += iniciarRotinaNoiteMorte;
@@ -60,7 +60,7 @@ public class DeathSystem : MonoBehaviour
     {
         npcsVivos.RemoveAll(npc => npc == null);
 
-        int quantidadeMortes = UnityEngine.Random.Range(1, 3);
+        int quantidadeMortes = 1;//UnityEngine.Random.Range(1, 3);
         int totalAlvos = npcsVivos.Count + 1;
         quantidadeMortes = Mathf.Min(quantidadeMortes, totalAlvos);
         //se sortear mais mortes do que possiveis alvos, o numero de mortes fica igual ao de alvos
@@ -77,6 +77,7 @@ public class DeathSystem : MonoBehaviour
             int iAlvo = UnityEngine.Random.Range(0, totalAlvos);
             if (iAlvo < npcsVivos.Count)
             {
+                Debug.Log("matando Npc for");
                 NPCLogica vitima = npcsVivos[iAlvo];
                 if (vitima != null) vitima.Morrer();
                 //essa funcao vai lancar o evento faleceuEvent 

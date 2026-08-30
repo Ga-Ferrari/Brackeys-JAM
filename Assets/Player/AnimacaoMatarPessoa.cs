@@ -17,6 +17,7 @@ public class AnimacaoMatarPessoa : MonoBehaviour
 
     private float zoomOriginal;
     private bool animandoNoite = false;
+    private bool jaIniciouNoite = false;
 
     void Start()
     {
@@ -45,8 +46,9 @@ public class AnimacaoMatarPessoa : MonoBehaviour
             // 2. Aproxima a câmera sincronizada com o tempo de apagar
             float velocidadeZoom = Mathf.Abs(zoomOriginal - zoomAlvo) / tempoApagar;
             lente.OrthographicSize = Mathf.MoveTowards(lente.OrthographicSize, zoomAlvo, velocidadeZoom * Time.deltaTime);
-            if (canvasGroup.alpha >= 1f)
+            if (!jaIniciouNoite && canvasGroup.alpha >= 1f)
             {
+                jaIniciouNoite = true;
                 EventBus.IniciarNoite();
             }
         }
@@ -54,6 +56,7 @@ public class AnimacaoMatarPessoa : MonoBehaviour
         {
             // 1. Clareia a tela
             canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, 0f, Time.deltaTime / tempoDesapagar);
+            jaIniciouNoite = false;
 
             // 2. Afasta a câmera sincronizada com o tempo de desapagar
             float velocidadeZoom = Mathf.Abs(zoomOriginal - zoomAlvo) / tempoDesapagar;

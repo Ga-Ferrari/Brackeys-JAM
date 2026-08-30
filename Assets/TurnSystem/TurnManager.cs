@@ -43,7 +43,7 @@ public class TurnManager : MonoBehaviour
         Debug.Log("Entrou on interacao");
         if (tipoAcao == tiposDeAcao.InteracaoNPC)
         {
-            trySpendAP(custo);
+            //trySpendAP(custo);
         }
     }
 

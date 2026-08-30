@@ -9,7 +9,7 @@ public static class EventBus
     public static event Action<tiposDeAcao, ObjetoInteragivel, int> OnInteragir;
 
     public static event Action<NPCAtributos> atirar;
-    public static event Action trocarSprite;
+    public static event Action<NPCLogica> trocarSprite;
 
     public static event Action travarControles;
     public static event Action iniciarManha;
@@ -32,6 +32,12 @@ public static class EventBus
 
     public static void IniciarNoite()
     {
+        Debug.Log("Iniciou a noite");
+        foreach (NPCLogica npc in GameManager.Instancia.npcsAMorrer)
+        {
+            trocarSprite?.Invoke(npc);
+        }
+        GameManager.Instancia.npcsAMorrer.Clear();
         iniciarNoite?.Invoke();
     }
 
@@ -42,7 +48,7 @@ public static class EventBus
 
     public static void TrocarSprite()
     {
-        trocarSprite?.Invoke();
+
     }
 
     public static void DispararAcaoFeita(tiposDeAcao tipoAcao, ObjetoInteragivel objeto, int custo = 0)

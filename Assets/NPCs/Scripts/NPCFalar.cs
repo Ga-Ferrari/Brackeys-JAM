@@ -31,13 +31,23 @@ public class FalasNPC : AcaoComCusto
         DetectorDeInteracoes.alvoTravado = this;
         if (falas.Count > 0)
         {
-            if (falaAtual == falas.Count)
+            if (GameManager.Instancia.posPrimeiraFala == GameManager.Instancia.primeiraFala.Count) GameManager.Instancia.primeiraInteracao = false;
+            if (GameManager.Instancia.primeiraInteracao)
             {
-                dialogo.DesativarDialogo();
-                falaAtual = 0;
-                DetectorDeInteracoes.interacaoBloqueada = false;
+                dialogo.SoltarDialogo(GameManager.Instancia.primeiraFala[GameManager.Instancia.posPrimeiraFala++]);
+                GameManager.Instancia.primeiraInteracao = false;
             }
-            else if (falaAtual < falas.Count) dialogo.SoltarDialogo(falas[falaAtual++]);
+            else
+            {
+                if (falaAtual == falas.Count)
+                {
+                    dialogo.DesativarDialogo();
+                    falaAtual = 0;
+                    DetectorDeInteracoes.interacaoBloqueada = false;
+                }
+                else if (falaAtual < falas.Count) dialogo.SoltarDialogo(falas[falaAtual++]);
+            }
+
         }
         interagido = true;
 
