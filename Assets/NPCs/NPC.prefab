@@ -224,7 +224,7 @@ MonoBehaviour:
   painelMenu: {fileID: 5353798266882931432}
   containerOpcoes: {fileID: 2832249396554102842}
   prefabOpcaoUI: {fileID: 25915754043001255, guid: add10dc8497798f64b23e52a61dd0971, type: 3}
-  tempoAparicao: 10
+  tempoAparicao: 0.5
   tempoDesaparicao: 0.25
   corSelecionada: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   corNormal: {r: 1, g: 1, b: 1, a: 1}

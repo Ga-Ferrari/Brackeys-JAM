@@ -14,15 +14,26 @@ public abstract class ObjetoInteragivel : MonoBehaviour, IInteractable
 
     private bool interagidoEEmRange = false;
     protected bool interagido = false;
+
+    public bool Interagido => interagido;
+
     // Adicione isso no ObjetoInteragivel.cs
     public string NomeDaInteracao => nomeInteracao;
+
+    public bool interagivel = true;
 
     protected virtual void Start()
     {
         gameObject.GetComponent<Outline2D>();
         gameObject.layer = LayerMask.NameToLayer("Interagivel");
         AtivarContorno(false);
+        EventBus.iniciarManha += Desinteragir;
         setTipo();
+    }
+
+    private void Desinteragir()
+    {
+        interagido = false;
     }
 
     protected virtual void DispararAcao()

@@ -10,5 +10,7 @@ public class NPCLogica : MonoBehaviour
     {
         faleceuEvent?.Invoke(this);
         GameManager.Instancia.npcList.Remove(this);
+        GameManager.Instancia.npcsAMorrer.Add(this);
+        GetComponent<Collider2D>().enabled = false;
     }
 }

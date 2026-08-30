@@ -4,7 +4,7 @@ public class Cama : ObjetoInteragivel
 {
     public override bool Interagir(GameObject gameObject)
     {
-        EventBus.DispararOnDormirCama();
+        EventBus.TravarControles();
         return true;
     }
 }
