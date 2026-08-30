@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6cd0bfa63444ae43b9e86f0fd2eff66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClueInteractable
-  nomeInteracao: Coletar Pista
+  nomeInteracao: Take Clue
   textoAcao: {fileID: 4130592374500690795}
   interagivel: 1
+  textoDaDica: 
   dialogo: {fileID: 9079627709461341227}
 --- !u!61 &5316989811231132565
 BoxCollider2D:
