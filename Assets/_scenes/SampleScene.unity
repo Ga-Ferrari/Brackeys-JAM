@@ -3005,21 +3005,13 @@ MonoBehaviour:
   estado: 1
   falasNpcs:
   - falas:
-    - I didn't notice anything different.
+    - Obviously, I am not the monster.
   - falas:
     - You're acting strange.
   - falas:
-    - Please do not disturb me.
-  - falas:
-    - <i>Sigh-</i>
-  - falas:
-    - A real shame, isn't it?
-  - falas:
-    - '<name> was acting strangely yesterday. '
-  - falas:
     - I spent the day with <name>.
   - falas:
-    - It looks like <name> is planning something.
+    - <name> was acting strangely yesterday.
 --- !u!114 &2131002271
 MonoBehaviour:
   m_ObjectHideFlags: 0
