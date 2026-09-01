@@ -3011,7 +3011,7 @@ MonoBehaviour:
   - falas:
     - I spent the day with <name>.
   - falas:
-    - <name> was acting strangely yesterday.
+    - <name1> and <name2> was acting strangely yesterday.
 --- !u!114 &2131002271
 MonoBehaviour:
   m_ObjectHideFlags: 0

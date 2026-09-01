@@ -64,10 +64,10 @@ public class FalasNPC : AcaoComCusto
         Debug.Log("Verdade: " + verdade);
         foreach (string fala in novasFalas)
         {
-            if (fala.Contains("<name>"))
+            if (fala.Contains("<name>") || fala.Contains("<name1>"))
             {
                 NPCAtributos npcAtt = null;
-
+                string falaSubstituida = "";
                 // Trava de segurança: evita um loop infinito se este for o único NPC vivo
                 if (GameManager.Instancia.death.npcsVivos.Count > 1)
                 {
@@ -81,12 +81,38 @@ public class FalasNPC : AcaoComCusto
                             Debug.Log(meuNome + " estou defendendo x");
                             do
                             {
-
                                 NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
                                 npcAtt = npc.GetComponent<NPCAtributos>();
                                 nome = npcAtt.nome;
                             }
-                            while (nome == meuNome && nome == GameManager.Instancia.impostor.GetComponent<NPCAtributos>().nome);
+                            // CORRIGIDO: Usa || (OU) em vez de && (E)
+                            while (nome == meuNome || nome == GameManager.Instancia.impostor.GetComponent<NPCAtributos>().nome);
+                            falaSubstituida = fala.Replace("<name>", nome);
+                            falasTratadas.Add(falaSubstituida);
+                        }
+                        // 2. NOVA FRASE: Frase de acusação (Aponta o impostor)
+                        else if (fala.Contains("<name1> and <name2> was acting strangely yesterday."))
+                        {
+                            Debug.Log(meuNome + " acusando o impostor e um inocente.");
+
+                            // 1. Define o primeiro nome (O Impostor)
+                            string nome1 = GameManager.Instancia.impostor.GetComponent<NPCAtributos>().nome;
+
+                            // 2. Define o segundo nome (Um inocente aleatório)
+                            string nome2 = "";
+                            do
+                            {
+                                NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                                nome2 = npc.GetComponent<NPCAtributos>().nome;
+                            }
+                            // Garante que o inocente não é o próprio falante, nem o impostor (nome1)
+                            while (nome2 == meuNome || nome2 == nome1);
+
+                            // 3. Substitui cada tag individualmente
+                            falaSubstituida = fala.Replace("<name1>", nome1);
+                            falaSubstituida = falaSubstituida.Replace("<name2>", nome2);
+
+                            falasTratadas.Add(falaSubstituida);
                         }
                         else
                         {
@@ -100,23 +126,56 @@ public class FalasNPC : AcaoComCusto
                                     nome = npcAtt.nome;
                                 } while (npcAtt.name == meuNome);
                             }
+                            falaSubstituida = fala.Replace("<name>", nome);
+                            falasTratadas.Add(falaSubstituida);
                         }
+
                     }
                     else
                     {
                         falandoVerdade = false;
-                        do
+
+                        // Se a frase da mentira usar 2 nomes
+                        if (fala.Contains("<name1>"))
                         {
-                            NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
-                            npcAtt = npc.GetComponent<NPCAtributos>();
-                            nome = npcAtt.nome;
-                        } while (npcAtt.name == meuNome);
+                            // 1. Sorteia o primeiro nome (qualquer um menos o falante)
+                            string nome1 = "";
+                            do
+                            {
+                                NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                                nome1 = npc.GetComponent<NPCAtributos>().nome;
+                            } while (nome1 == meuNome);
+
+                            // 2. Sorteia o segundo nome (diferente do falante e do nome1)
+                            string nome2 = "";
+                            do
+                            {
+                                NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                                nome2 = npc.GetComponent<NPCAtributos>().nome;
+                            } while (nome2 == meuNome || nome2 == nome1);
+
+                            falaSubstituida = fala.Replace("<name1>", nome1);
+                            falaSubstituida = falaSubstituida.Replace("<name2>", nome2);
+                            falasTratadas.Add(falaSubstituida);
+                        }
+                        // Se a frase da mentira usar apenas 1 nome
+                        else
+                        {
+                            do
+                            {
+                                NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                                npcAtt = npc.GetComponent<NPCAtributos>();
+                                nome = npcAtt.nome;
+                            } while (npcAtt.name == meuNome);
+
+                            falaSubstituida = fala.Replace("<name>", nome);
+                            falasTratadas.Add(falaSubstituida);
+                        }
                     }
 
 
                     // Strings em C# são imutáveis. O Replace retorna uma NOVA string, não altera a original.
-                    string falaSubstituida = fala.Replace("<name>", nome);
-                    falasTratadas.Add(falaSubstituida);
+
                 }
                 else
                 {
