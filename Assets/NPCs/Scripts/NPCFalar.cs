@@ -1,6 +1,5 @@
 
 using UnityEngine;
-using System;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
@@ -12,6 +11,8 @@ public class FalasNPC : AcaoComCusto
 
     [SerializeField] private List<string> falas = new List<string>();
     private int falaAtual = 0;
+
+    private bool falandoVerdade = false;
 
     void Awake()
     {
@@ -25,6 +26,8 @@ public class FalasNPC : AcaoComCusto
 
     public override bool Interagir(GameObject gameObject)
     {
+        if (falandoVerdade)
+            Debug.Log("Falando a verdade");
         base.Interagir(gameObject);
         DetectorDeInteracoes.interacaoBloqueada = true;
         DetectorDeInteracoes.alvoTravado = this;
@@ -57,6 +60,8 @@ public class FalasNPC : AcaoComCusto
         List<string> falasTratadas = new List<string>();
         string meuNome = GetComponent<NPCAtributos>().name; // Salva fora do loop para otimizar
 
+        int verdade = Random.Range(0, 2);
+        Debug.Log("Verdade: " + verdade);
         foreach (string fala in novasFalas)
         {
             if (fala.Contains("<name>"))
@@ -66,14 +71,51 @@ public class FalasNPC : AcaoComCusto
                 // Trava de segurança: evita um loop infinito se este for o único NPC vivo
                 if (GameManager.Instancia.death.npcsVivos.Count > 1)
                 {
-                    do
+
+                    string nome = "";
+                    if (verdade == 1)
                     {
-                        NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
-                        npcAtt = npc.GetComponent<NPCAtributos>();
-                    } while (npcAtt.name == meuNome);
+                        falandoVerdade = true;
+                        if (fala.Contains("I spent the day with <name>."))
+                        {
+                            Debug.Log(meuNome + " estou defendendo x");
+                            do
+                            {
+
+                                NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                                npcAtt = npc.GetComponent<NPCAtributos>();
+                                nome = npcAtt.nome;
+                            }
+                            while (nome == meuNome && nome == GameManager.Instancia.impostor.GetComponent<NPCAtributos>().nome);
+                        }
+                        else
+                        {
+                            nome = GameManager.Instancia.impostor.GetComponent<NPCAtributos>().nome;
+                            if (nome == meuNome)
+                            {
+                                do
+                                {
+                                    NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                                    npcAtt = npc.GetComponent<NPCAtributos>();
+                                    nome = npcAtt.nome;
+                                } while (npcAtt.name == meuNome);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        falandoVerdade = false;
+                        do
+                        {
+                            NPCLogica npc = GameManager.Instancia.death.npcsVivos[UnityEngine.Random.Range(0, GameManager.Instancia.death.npcsVivos.Count)];
+                            npcAtt = npc.GetComponent<NPCAtributos>();
+                            nome = npcAtt.nome;
+                        } while (npcAtt.name == meuNome);
+                    }
+
 
                     // Strings em C# são imutáveis. O Replace retorna uma NOVA string, não altera a original.
-                    string falaSubstituida = fala.Replace("<name>", npcAtt.name);
+                    string falaSubstituida = fala.Replace("<name>", nome);
                     falasTratadas.Add(falaSubstituida);
                 }
                 else

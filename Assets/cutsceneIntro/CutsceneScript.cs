@@ -4,15 +4,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class CutsceneScript  : MonoBehaviour
+public class CutsceneScript : MonoBehaviour
 {
     [Header("Componentes")]
     public Image telaDeFundo;
     public GameObject botaoInvisivel;
-    
     [Header("Artes da História")]
-    public Sprite[] paineisHistoria; 
-    
+    public Sprite[] paineisHistoria;
     private int indiceAtual = 0;
 
     void Start()
@@ -34,7 +32,7 @@ public class CutsceneScript  : MonoBehaviour
         {
             telaDeFundo.sprite = paineisHistoria[indiceAtual];
         }
-        else 
+        else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }

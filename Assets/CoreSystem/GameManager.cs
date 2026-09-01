@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour
         {
             int indiceAleatorio = UnityEngine.Random.Range(0, falasNpcs.Count);
             npc.GetComponent<FalasNPC>().setFalas(falasNpcs[indiceAleatorio].falas);
-            Debug.Log("Setando falas dos NPCs");
         }
         int indice = UnityEngine.Random.Range(0, falasNpcs.Count);
         impostor.GetComponent<FalasNPC>().setFalas(falasNpcs[indice].falas);
