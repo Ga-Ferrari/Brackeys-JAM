@@ -15,6 +15,8 @@ public static class ClueTextGenerator
         TipoDica.Genero
     };
 
+    private static List<string> confiaveisRevelados = new List<string>();
+
     //funcao para caso a partida reiniciar
     public static void ResetarListaDicas()
     {
@@ -25,6 +27,8 @@ public static class ClueTextGenerator
             TipoDica.Idade,
             TipoDica.Genero
         };
+
+        confiaveisRevelados.Clear();
     }
 
     public static string GerarDica()
@@ -32,7 +36,7 @@ public static class ClueTextGenerator
         if (dicasDisponiveis.Count == 0)
         {
             Debug.Log("Nao ha mais dicas");
-            return "...";
+            return "BE AWARE!!!";
         }
 
         //sorteio da dica
@@ -69,7 +73,7 @@ public static class ClueTextGenerator
         inocentes.RemoveAll(npc => npc == null);
         if (inocentes.Count == 0)//verifica se todos os inocentes já morreram
         {
-            return "CUIDADO!!";
+            return "BE AWARE!!!";
         }
 
         switch (dicaSorteada)
@@ -77,9 +81,7 @@ public static class ClueTextGenerator
             case TipoDica.Suspeitos:
                 return GerarDicaSuspeitos(atributos.nome, inocentes);
             case TipoDica.Confiavel:
-                int inocenteConfiavel = UnityEngine.Random.Range(0, inocentes.Count);
-                string nomeInocente = inocentes[inocenteConfiavel].GetComponent<NPCAtributos>().nome;
-                return $"'{nomeInocente} is trustworthy.'";
+                return GerarDicaConfiavel(inocentes);
             case TipoDica.Idade:
                 string textoIdade = (atributos.idade == Idade.Adulto) ? "an adult" : "not an adult";
                 return $"'I saw that it was {textoIdade}.'";
@@ -90,6 +92,35 @@ public static class ClueTextGenerator
                 Debug.Log("Pista de tipo desconhecido");
                 return "...";
         }
+    }
+
+    private static string GerarDicaConfiavel(List<NPCLogica> inocentes)
+    {
+        //Cria uma lista de inocentes que nao foram revelados
+        List<NPCLogica> confiaveis = inocentes.FindAll(npc => npc != null 
+            && !confiaveisRevelados.Contains(npc.GetComponent<NPCAtributos>().nome));
+
+        //Se todos os inocentes ja foram revelados
+        if(confiaveis.Count == 0)
+        {
+            dicasDisponiveis.Remove(TipoDica.Confiavel);
+            return "'I don't know who else to trust...'"; //frase reserva
+        }
+
+        //Sorteio entre os inocentes que não foram citados
+        int iSort = UnityEngine.Random.Range(0, confiaveis.Count);
+        string nomeInocente = confiaveis[iSort].GetComponent<NPCAtributos>().nome;
+
+        //Salva o nome do inocente para nao repeti-lo
+        confiaveisRevelados.Add(nomeInocente);
+
+        //Se esse era o ultimo inocente disponivel, remove a dica confiavel da lista de disponiveis
+        if(confiaveis.Count == 1)
+        {
+            dicasDisponiveis.Remove(TipoDica.Confiavel);
+        }
+
+        return $"'{nomeInocente} is trustworthy.'";
     }
 
     private static string GerarDicaSuspeitos(string nomeImpostor, List<NPCLogica> inocentes)
