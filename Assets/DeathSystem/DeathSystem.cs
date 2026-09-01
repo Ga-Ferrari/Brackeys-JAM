@@ -62,8 +62,7 @@ public class DeathSystem : MonoBehaviour
         npcsVivos.RemoveAll(npc => npc == null);
 
         int quantidadeMortes = UnityEngine.Random.Range(1, 3);
-        int totalAlvos = npcsVivos.Count + 1;
-        quantidadeMortes = Mathf.Min(quantidadeMortes, totalAlvos);
+        quantidadeMortes = Mathf.Min(quantidadeMortes, npcsVivos.Count + 1);
         //se sortear mais mortes do que possiveis alvos, o numero de mortes fica igual ao de alvos
         Debug.Log($"O impostor matara {quantidadeMortes}");
 
@@ -76,7 +75,7 @@ public class DeathSystem : MonoBehaviour
                 break;
             }
 
-            int iAlvo = UnityEngine.Random.Range(0, totalAlvos);
+            int iAlvo = UnityEngine.Random.Range(0, npcsVivos.Count + 1);
             if (iAlvo < npcsVivos.Count)
             {
                 Debug.Log("matando Npc for");
@@ -90,6 +89,8 @@ public class DeathSystem : MonoBehaviour
                 Debug.Log("O impostor matou o player");
                 if (GameManager.Instancia.estado != 3)
                     GameManager.Instancia.estado = 2;
+                
+                break;
             }
         }
         EventBus.AtivarPainel();

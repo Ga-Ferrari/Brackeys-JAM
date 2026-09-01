@@ -16,6 +16,7 @@ public class TurnManager : MonoBehaviour
 
     void Start()
     {
+        actionPoints = MAX_AP;
         EventBus.OnDormirCama += IniciarNoite;
         EventBus.OnInteragir += OnInteracoes;
         EventBus.iniciarNoite += IniciarNoite;

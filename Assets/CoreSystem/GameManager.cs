@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         {
             Instancia = null;
         }
+
+        EventBus.LimparEventos();
     }
 
     private void SetarFalasDosNPCs()

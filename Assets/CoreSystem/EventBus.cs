@@ -30,6 +30,11 @@ public static class EventBus
     public static void IniciarManha()
     {
         iniciarManha?.Invoke();
+        foreach (NPCLogica npc in GameManager.Instancia.npcsAMorrer)
+        {
+            trocarSprite?.Invoke(npc);
+        }
+        GameManager.Instancia.npcsAMorrer.Clear();
     }
 
     public static void DispararOnDormirCama()
@@ -40,11 +45,6 @@ public static class EventBus
     public static void IniciarNoite()
     {
         Debug.Log("Iniciou a noite");
-        foreach (NPCLogica npc in GameManager.Instancia.npcsAMorrer)
-        {
-            trocarSprite?.Invoke(npc);
-        }
-        GameManager.Instancia.npcsAMorrer.Clear();
         iniciarNoite?.Invoke();
     }
 
@@ -66,5 +66,17 @@ public static class EventBus
     public static void DispararAcaoFeita(tiposDeAcao tipoAcao, ObjetoInteragivel objeto, int custo = 0)
     {
         OnInteragir?.Invoke(tipoAcao, objeto, custo);
+    }
+
+    public static void LimparEventos()
+    {
+        OnDormirCama = null;
+        ativarPainel = null;
+        OnInteragir = null;
+        atirar = null;
+        trocarSprite = null;
+        travarControles = null;
+        iniciarManha = null;
+        iniciarNoite = null;
     }
 }

@@ -818,9 +818,17 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
       propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 652186083}
     - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
       propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -830,8 +838,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
       propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: IniciarDia
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+      propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6452678337159842770, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
       propertyPath: eventoFinal.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -982,6 +998,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+--- !u!1 &652186083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7398178478201334, guid: 3d38af3a3c9c6c64ca8d01c67b714433, type: 3}
+  m_PrefabInstance: {fileID: 652186082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &704092839
 PrefabInstance:
   m_ObjectHideFlags: 0
